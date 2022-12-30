@@ -2,7 +2,10 @@ import { FC } from "react";
 import { config } from "../App/config";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
-import { useLogInMutation } from "./logIn/useLogInMutation";
+import {
+  LogInMutationResponse,
+  useLogInMutation,
+} from "./logIn/useLogInMutation";
 import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import { Stack } from "@mui/system";
@@ -16,11 +19,11 @@ export const LogIn: FC = () => {
   const { routes } = config;
   const { palette } = useTheme();
   const navigate = useNavigate();
-  const [, setUserToken] = useLocalStorage<string>("userToken");
+  const [, setUserData] = useLocalStorage<LogInMutationResponse>("userData");
 
   const logInMutation = useLogInMutation({
-    onSuccess: ({ token }) => {
-      setUserToken(token);
+    onSuccess: (userData) => {
+      setUserData(userData);
       navigate(routes.documents);
     },
   });

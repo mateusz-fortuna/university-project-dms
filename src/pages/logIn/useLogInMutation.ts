@@ -1,13 +1,14 @@
+import axios, { AxiosError } from "axios";
 import { UseMutationOptions } from "@tanstack/react-query/build/lib/types";
 import { useMutation } from "@tanstack/react-query";
-import axios, { AxiosError } from "axios";
+import { RegisteredUser } from "../../mocks/responses/logInMutationResponse";
 
 export interface Credentials {
   username: string;
   password: string;
 }
 
-export interface LogInMutationResponse {
+export interface LogInMutationResponse extends RegisteredUser {
   token: string;
 }
 

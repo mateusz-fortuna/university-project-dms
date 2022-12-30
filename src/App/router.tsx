@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
   {
     path: routes.documents,
     element: (
-      <RestrictedPage>
+      <RestrictedPage allowedRoles={["admin", "user"]}>
         <Documents />
       </RestrictedPage>
     ),
