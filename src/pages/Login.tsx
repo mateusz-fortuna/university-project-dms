@@ -7,6 +7,7 @@ import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import { Stack } from "@mui/system";
 import { LogInForm } from "./logIn/LogInForm";
+import { ErrorModal } from "../ui-components/ErrorModal";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -53,6 +54,13 @@ export const LogIn: FC = () => {
           <LogInForm mutation={logInMutation} />
         </Stack>
       </Paper>
+
+      {logInMutation.isError && (
+        <ErrorModal
+          title="Logowanie nie powiodło się"
+          description="Podano nieprawidłowe dane logowania."
+        />
+      )}
     </Box>
   );
 };

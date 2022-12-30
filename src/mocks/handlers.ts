@@ -1,9 +1,14 @@
-import { rest } from "msw";
-import { nanoid } from "nanoid";
-import { LogInMutationResponse } from "../pages/logIn/useLogInMutation";
+import { context, rest } from "msw";
+import { Credentials } from "../pages/logIn/useLogInMutation";
+import { logInMutationResponse } from "./responses/logInMutationResponse";
+
+const delay = context.delay();
 
 export const handlers = [
-  rest.post("/login", async (_req, res, ctx) => {
-    return await res(ctx.json<LogInMutationResponse>({ token: nanoid() }));
+  rest.post("/login", async (req, res) => {
+    const credentials = await req.json<Credentials>();
+    console.log(credentials);
+
+    return await res(delay, logInMutationResponse(credentials));
   }),
 ];
