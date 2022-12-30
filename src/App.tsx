@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { FC } from "react";
+import { FC } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -8,14 +7,16 @@ import {
 import { CssBaseline } from "@mui/material";
 import { Documents } from "./pages/Documents";
 import { config } from "./app.config";
+import { Login } from "./pages/Login";
 
 const App: FC = () => {
   const { routes } = config;
 
   const router = createBrowserRouter([
     { path: "*", element: <Navigate to={routes.documents} /> },
+    { path: routes.login, element: <Login /> },
     {
-      path: "/" + routes.documents,
+      path: routes.documents,
       element: <Documents />,
     },
   ]);

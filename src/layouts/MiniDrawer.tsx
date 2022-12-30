@@ -30,8 +30,8 @@ type MiniDrawerProps = PropsWithChildren & { title: string };
 
 export const MiniDrawer: FC<MiniDrawerProps> = (props) => {
   const [open, setOpen] = useIsDrawerOpen();
+  const { pathname } = useLocation();
   const { routes } = config;
-  const route = useLocation().pathname.slice(1);
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -72,38 +72,38 @@ export const MiniDrawer: FC<MiniDrawerProps> = (props) => {
           <DrawerItem
             text="Dokumenty w obiegu"
             icon={<DocumentsIcon color="primary" />}
-            isSelected={route === routes.documents}
+            isSelected={pathname === routes.documents}
             onClick={() => navigate("/" + routes.documents)}
           />
           <DrawerItem
             text="Manager dokumentów"
             icon={<DocumentsManagerIcon color="primary" />}
-            isSelected={route === routes.documentsManager}
+            isSelected={pathname === routes.documentsManager}
             onClick={() => navigate("/" + routes.documentsManager)}
           />
           <DrawerItem
             text="Inicjowanie obiegu"
             icon={<InitiateIcon color="primary" />}
-            isSelected={route === routes.initiate}
+            isSelected={pathname === routes.initiate}
             onClick={() => navigate("/" + routes.initiate)}
           />
           <DrawerItem
             text="Skanowanie OCR"
             icon={<ScanIcon color="primary" />}
-            isSelected={route === routes.scan}
+            isSelected={pathname === routes.scan}
             onClick={() => navigate("/" + routes.scan)}
           />
           <DrawerItem
             text="Struktura organizacyjna"
             icon={<OrganizationIcon color="primary" />}
-            isSelected={route === routes.organization}
+            isSelected={pathname === routes.organization}
             onClick={() => navigate("/" + routes.organization)}
           />
           <Divider />
           <DrawerItem
             text="Panel administratora"
             icon={<AdminPanelIcon color="primary" />}
-            isSelected={route === routes.adminPanel}
+            isSelected={pathname === routes.adminPanel}
             onClick={() => navigate("/" + routes.adminPanel)}
           />
         </List>
