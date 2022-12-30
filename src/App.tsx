@@ -2,8 +2,10 @@ import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import { loggedUserRoutes, guestRoutes } from "./app/routes";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const App: FC = () => {
+  const queryClient = new QueryClient();
   const isUserLoggedIn = false;
 
   const router = createBrowserRouter(
@@ -13,7 +15,9 @@ const App: FC = () => {
   return (
     <>
       <CssBaseline />
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
   );
 };

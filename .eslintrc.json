@@ -21,6 +21,7 @@
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/restrict-plus-operands": "off"
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "@typescript-eslint/no-misused-promises": "off"
   }
 }
