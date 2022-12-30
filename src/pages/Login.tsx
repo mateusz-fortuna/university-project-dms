@@ -1,19 +1,17 @@
 import { FC } from "react";
 import { config } from "../app.config";
-import { Box, TextField } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
-import { Credentials, useLogInMutation } from "./logIn/useLogInMutation";
+import { Box } from "@mui/material";
+import { useLogInMutation } from "./logIn/useLogInMutation";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import { Stack } from "@mui/system";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import { LoadingButton } from "@mui/lab";
+import { LogInForm } from "./logIn/LogInForm";
 
 export const LogIn: FC = () => {
   const { routes } = config;
-  const { control, handleSubmit } = useForm<Credentials>();
   const { palette } = useTheme();
   const navigate = useNavigate();
 
@@ -21,10 +19,6 @@ export const LogIn: FC = () => {
     onSuccess: () => {
       navigate(routes.documents);
     },
-  });
-
-  const onSubmit = handleSubmit((form) => {
-    logInMutation.mutate(form);
   });
 
   return (
@@ -53,63 +47,7 @@ export const LogIn: FC = () => {
             Logowanie
           </Typography>
           <Divider />
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": {
-                width: "35ch",
-                display: "flex",
-              },
-            }}
-            noValidate
-            autoComplete="off"
-            onSubmit={onSubmit}
-            marginTop={2}
-          >
-            <Stack gap={2}>
-              <Controller
-                control={control}
-                name="username"
-                rules={{
-                  required: {
-                    value: true,
-                    message: "Nazwa użytkownika jest wymagana!",
-                  },
-                }}
-                render={({ field, fieldState: { error } }) => (
-                  <TextField
-                    {...field}
-                    label="Nazwa użytkownika"
-                    error={Boolean(error)}
-                    helperText={error?.message}
-                  />
-                )}
-              />
-              <Controller
-                control={control}
-                name="password"
-                rules={{
-                  required: { value: true, message: "Hasło jest wymagane!" },
-                }}
-                render={({ field, fieldState: { error } }) => (
-                  <TextField
-                    {...field}
-                    label="Hasło"
-                    error={Boolean(error)}
-                    helperText={error?.message}
-                  />
-                )}
-              />
-              <LoadingButton
-                type="submit"
-                loading={logInMutation.isLoading}
-                variant="contained"
-                fullWidth
-              >
-                Zaloguj się
-              </LoadingButton>
-            </Stack>
-          </Box>
+          <LogInForm mutation={logInMutation} />
         </Stack>
       </Paper>
     </Box>
