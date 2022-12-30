@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
 import { Documents } from "./pages/Documents";
 
 const App: FC = () => {
@@ -13,6 +14,7 @@ const App: FC = () => {
 
   return (
     <>
+      <CssBaseline />
       <RouterProvider router={router} />
     </>
   );
