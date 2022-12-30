@@ -9,7 +9,9 @@ interface LogInFormProps {
 }
 
 export const LogInForm: FC<LogInFormProps> = ({ mutation }) => {
-  const { control, handleSubmit } = useForm<Credentials>();
+  const { control, handleSubmit } = useForm<Credentials>({
+    defaultValues: { password: "", username: "" },
+  });
 
   const onSubmit = handleSubmit((form) => {
     mutation.mutate(form);
