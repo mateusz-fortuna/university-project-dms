@@ -5,21 +5,28 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import { useLocalStorage } from "react-use";
 
 interface DrawerItemProps {
-  isDrawerOpen: boolean;
   text: string;
   icon: ReactNode;
+  isSelected: boolean;
+  onClick: () => void;
 }
 
 export const DrawerItem: FC<DrawerItemProps> = ({
-  isDrawerOpen,
   text,
   icon,
+  isSelected,
+  onClick,
 }) => {
+  const [isDrawerOpen] = useLocalStorage("isDrawerOpen");
+
   return (
     <ListItem disablePadding sx={{ display: "block" }}>
       <ListItemButton
+        onClick={onClick}
+        selected={isSelected}
         sx={{
           minHeight: 48,
           justifyContent: isDrawerOpen ? "initial" : "center",
