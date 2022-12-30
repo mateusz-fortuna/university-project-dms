@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from "react";
 import { Navigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
-import { config } from "../app.config";
+import { config } from "../App/config";
 
 export const RestrictedPage: FC<PropsWithChildren> = ({ children }) => {
   const [isUserLoggedIn] = useLocalStorage<string>("userToken");

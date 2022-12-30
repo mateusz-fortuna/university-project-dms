@@ -1,4 +1,4 @@
-import { config } from "../app.config";
+import { config } from "./config";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { RestrictedPage } from "../HOCs/RestrictedPage";
 import { Documents } from "../pages/Documents";

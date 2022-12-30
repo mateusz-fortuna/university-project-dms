@@ -1,15 +1,15 @@
 import { FC } from "react";
+import { config } from "../App/config";
+import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
 import { useLogInMutation } from "./logIn/useLogInMutation";
 import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import { Stack } from "@mui/system";
 import { LogInForm } from "./logIn/LogInForm";
+import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import { useNavigate } from "react-router-dom";
-import { config } from "../app.config";
 
 export const LogIn: FC = () => {
   const { routes } = config;

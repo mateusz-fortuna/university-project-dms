@@ -8,7 +8,7 @@ import {
   Divider,
   List,
 } from "@mui/material";
-import { config } from "../app.config";
+import { config } from "../App/config";
 import { useTheme } from "@mui/material/styles";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useIsDrawerOpen } from "./MiniDrawer/hooks/useIsDrawerOpen";
