@@ -8,7 +8,7 @@ import {
   Divider,
   List,
 } from "@mui/material";
-import { routes } from "../App";
+import { config } from "../app.config";
 import { useTheme } from "@mui/material/styles";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useIsDrawerOpen } from "./MiniDrawer/hooks/useIsDrawerOpen";
@@ -30,6 +30,7 @@ type MiniDrawerProps = PropsWithChildren & { title: string };
 
 export const MiniDrawer: FC<MiniDrawerProps> = (props) => {
   const [open, setOpen] = useIsDrawerOpen();
+  const { routes } = config;
   const route = useLocation().pathname.slice(1);
   const theme = useTheme();
   const navigate = useNavigate();

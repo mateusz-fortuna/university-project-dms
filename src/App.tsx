@@ -7,17 +7,11 @@ import {
 } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 import { Documents } from "./pages/Documents";
-
-export const routes = {
-  documents: "documents",
-  documentsManager: "documentsManager",
-  initiate: "initiate",
-  scan: "scan",
-  organization: "organization",
-  adminPanel: "adminPanel",
-};
+import { config } from "./app.config";
 
 const App: FC = () => {
+  const { routes } = config;
+
   const router = createBrowserRouter([
     { path: "*", element: <Navigate to={routes.documents} /> },
     {
