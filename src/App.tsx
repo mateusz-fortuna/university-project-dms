@@ -1,25 +1,14 @@
 import { FC } from "react";
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
-import { Documents } from "./pages/Documents";
-import { config } from "./app.config";
-import { Login } from "./pages/Login";
+import { loggedUserRoutes, guestRoutes } from "./app/routes";
 
 const App: FC = () => {
-  const { routes } = config;
+  const isUserLoggedIn = false;
 
-  const router = createBrowserRouter([
-    { path: "*", element: <Navigate to={routes.documents} /> },
-    { path: routes.login, element: <Login /> },
-    {
-      path: routes.documents,
-      element: <Documents />,
-    },
-  ]);
+  const router = createBrowserRouter(
+    isUserLoggedIn ? loggedUserRoutes : guestRoutes
+  );
 
   return (
     <>
