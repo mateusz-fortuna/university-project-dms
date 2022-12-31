@@ -1,5 +1,5 @@
 import { DocumentRun } from "../documentRunsQueryResponse";
-import { stages } from "../documentRunStageQueryResponse/documentRunStages";
+import { stages } from "../documentRunStagesQueryResponse/documentRunStages";
 
 const getStageByRunId = (runId: DocumentRun["id"]) => {
   return stages.filter((stage) => stage.runId === runId);

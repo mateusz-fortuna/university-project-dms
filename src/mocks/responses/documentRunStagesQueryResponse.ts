@@ -1,6 +1,6 @@
 import { context } from "msw";
 import { DocumentRun } from "./documentRunsQueryResponse";
-import { stages } from "./documentRunStageQueryResponse/documentRunStages";
+import { stages } from "./documentRunStagesQueryResponse/documentRunStages";
 
 export interface DocumentRunStage {
   id: string;

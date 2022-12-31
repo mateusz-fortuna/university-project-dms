@@ -7,7 +7,7 @@ export interface DocumentRun {
   id: string;
   categoryId: DocumentRunCategory["id"];
   name: string;
-  stages: DocumentRunStage[] | null;
+  stages: DocumentRunStage[];
 }
 
 export const documentRunsQueryResponse = (id?: DocumentRun["id"]) => {

@@ -15,9 +15,10 @@ import { useDocumentRunsQuery } from "./documents/hooks/useDocumentRunsQuery";
 import { useDocumentRunCategoriesQuery } from "./documents/hooks/useDocumentRunCategoriesQuery";
 import { ErrorModal } from "../ui-components/ErrorModal";
 import { CollapsableListButton } from "./documents/CollapsableListButton";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import RunIcon from "@mui/icons-material/UploadFile";
 import HomeIcon from "@mui/icons-material/Home";
-import { DataGrid } from "@mui/x-data-grid";
+import { nanoid } from "nanoid";
 
 export const Documents: FC = () => {
   const documentsQuery = useDocumentsQuery();
@@ -40,14 +41,6 @@ export const Documents: FC = () => {
     !documentRunCategoriesQuery.data ||
     !registeredUsersQuery.data;
 
-  console.log(
-    documentsQuery.data,
-    documentRunsQuery.data,
-    documentRunStagesQuery.data,
-    documentRunCategoriesQuery.data,
-    registeredUsersQuery.data
-  );
-
   if (isDataLoading) {
     return (
       <MainNavigation title="Dokumenty w obiegu">
@@ -63,6 +56,55 @@ export const Documents: FC = () => {
       </MainNavigation>
     );
   }
+
+  const tableData = documentsQuery.data.map(
+    ({ internalId, history, authorId }) => {
+      const stageId = history[0].stageId;
+      const stage = documentRunStagesQuery.data.find(
+        (stage) => stage.id === stageId
+      );
+
+      if (!stage) {
+        return {
+          id: nanoid(),
+          internalId,
+          runName: "-",
+          stageName: "-",
+          lastRunAt: "-",
+          stageStatus: "-",
+          assignee:
+            registeredUsersQuery.data.find((user) => user.id === authorId)
+              ?.name ?? "-",
+        };
+      }
+
+      const run = documentRunsQuery.data.find((run) => run.id === stage.runId);
+
+      return {
+        id: nanoid(),
+        internalId,
+        runName: run?.name ?? "-",
+        stageName: stage.name,
+        lastRunAt: history[history.length - 1].createdAt,
+        stageStatus:
+          run?.stages?.find((runStage) => runStage.id === stage.id) ?? "-",
+        assignee:
+          registeredUsersQuery.data.find((user) => user.id === authorId)
+            ?.name ?? "-",
+      };
+    }
+  );
+
+  const columns: GridColDef[] = [{ field: "internalId", headerName: "Numer" }];
+
+  console.log(
+    tableData,
+    documentsQuery.data,
+    documentRunsQuery.data,
+    documentRunStagesQuery.data,
+    documentRunCategoriesQuery.data,
+    registeredUsersQuery.data
+  );
 
   const renderFoldersTree = () => (
     <List>
@@ -95,7 +137,9 @@ export const Documents: FC = () => {
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
         {renderFoldersTree()}
-        <DataGrid columns={[]} rows={[]} />
+        <Box height="500px">
+          <DataGrid columns={columns} rows={tableData} />
+        </Box>
       </Box>
     </MainNavigation>
   );
