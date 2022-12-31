@@ -87,7 +87,8 @@ export const Documents: FC = () => {
         stageName: stage.name,
         lastRunAt: history[history.length - 1].createdAt,
         stageStatus:
-          run?.stages?.find((runStage) => runStage.id === stage.id) ?? "-",
+          run?.stages?.find((runStage) => runStage.id === stage.id)?.status ??
+          "-",
         assignee:
           registeredUsersQuery.data.find((user) => user.id === authorId)
             ?.name ?? "-",
@@ -95,7 +96,14 @@ export const Documents: FC = () => {
     }
   );
 
-  const columns: GridColDef[] = [{ field: "internalId", headerName: "Numer" }];
+  const columns: GridColDef[] = [
+    { field: "internalId", headerName: "Numer", width: 130 },
+    { field: "runName", headerName: "Nazwa obiegu", width: 130 },
+    { field: "stageName", headerName: "Nazwa etapu", width: 150 },
+    { field: "lastRunAt", headerName: "Data przekazania", width: 130 },
+    { field: "stageStatus", headerName: "Status", width: 130 },
+    { field: "assignee", headerName: "Osoba przypisana", width: 150 },
+  ];
 
   console.log(
     tableData,
@@ -137,7 +145,13 @@ export const Documents: FC = () => {
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
         {renderFoldersTree()}
-        <Box height="500px">
+        <Box
+          height="500px"
+          width={columns
+            .map((columns) => columns.width ?? 0)
+            .reduce((sum, currentColumnWidth) => sum + currentColumnWidth)}
+          margin="0 4"
+        >
           <DataGrid columns={columns} rows={tableData} />
         </Box>
       </Box>
