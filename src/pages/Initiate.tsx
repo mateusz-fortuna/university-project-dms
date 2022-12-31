@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { MiniDrawer } from "../layouts/MiniDrawer";
+import { MainNavigation } from "../layouts/MainNavigation";
 
 export const Initiate: FC = () => {
-  return <MiniDrawer title="Inicjowanie obiegu" />;
+  return <MainNavigation title="Inicjowanie obiegu" />;
 };

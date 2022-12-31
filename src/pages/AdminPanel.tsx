@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { MiniDrawer } from "../layouts/MiniDrawer";
+import { MainNavigation } from "../layouts/MainNavigation";
 
 export const AdminPanel: FC = () => {
-  return <MiniDrawer title="Panel administratora" />;
+  return <MainNavigation title="Panel administratora" />;
 };

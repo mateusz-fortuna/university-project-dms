@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { MiniDrawer } from "../layouts/MiniDrawer";
+import { MainNavigation } from "../layouts/MainNavigation";
 
 export const Organization: FC = () => {
-  return <MiniDrawer title="Struktura organizacyjna" />;
+  return <MainNavigation title="Struktura organizacyjna" />;
 };

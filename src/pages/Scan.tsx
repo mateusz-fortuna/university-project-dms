@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { MiniDrawer } from "../layouts/MiniDrawer";
+import { MainNavigation } from "../layouts/MainNavigation";
 
 export const Scan: FC = () => {
-  return <MiniDrawer title="Skanowanie OCR" />;
+  return <MainNavigation title="Skanowanie OCR" />;
 };

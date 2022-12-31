@@ -1,6 +1,6 @@
-import { Stack } from "@mui/system";
 import { FC } from "react";
-import { MiniDrawer } from "../layouts/MiniDrawer";
+import { Box } from "@mui/material";
+import { MainNavigation } from "../layouts/MainNavigation";
 import { Loader } from "../ui-components/Loader";
 import { useDocumentsQuery } from "./documents/hooks/useDocumentsQuery";
 
@@ -12,8 +12,12 @@ export const Documents: FC = () => {
   console.log(documentsQuery.data);
 
   return (
-    <MiniDrawer title="Dokumenty w obiegu">
-      {isDataLoading ? <Loader>Ładowanie danych...</Loader> : <Stack></Stack>}
-    </MiniDrawer>
+    <MainNavigation title="Dokumenty w obiegu">
+      {isDataLoading ? (
+        <Loader>Ładowanie danych...</Loader>
+      ) : (
+        <Box display="flex"></Box>
+      )}
+    </MainNavigation>
   );
 };

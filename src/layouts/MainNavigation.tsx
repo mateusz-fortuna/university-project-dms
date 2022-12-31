@@ -11,12 +11,12 @@ import {
 import { config } from "../App/config";
 import { useTheme } from "@mui/material/styles";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useIsDrawerOpen } from "./MiniDrawer/hooks/useIsDrawerOpen";
+import { useIsDrawerOpen } from "./MainNavigation/hooks/useIsDrawerOpen";
 import { useLocalStorage } from "react-use";
-import { AppBar } from "./MiniDrawer/AppBar";
-import { Drawer } from "./MiniDrawer/Drawer";
-import { DrawerHeader } from "./MiniDrawer/DrawerHeader";
-import { DrawerItem } from "./MiniDrawer/DrawerItem";
+import { AppBar } from "./MainNavigation/AppBar";
+import { Drawer } from "./MainNavigation/Drawer";
+import { DrawerHeader } from "./MainNavigation/DrawerHeader";
+import { DrawerItem } from "./MainNavigation/DrawerItem";
 import { LogInMutationResponse } from "../pages/logIn/useLogInMutation";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -28,9 +28,9 @@ import InitiateIcon from "@mui/icons-material/UploadFile";
 import OrganizationIcon from "@mui/icons-material/Group";
 import AdminPanelIcon from "@mui/icons-material/AdminPanelSettings";
 
-type MiniDrawerProps = PropsWithChildren & { title: string };
+type MainNavigationProps = PropsWithChildren & { title: string };
 
-export const MiniDrawer: FC<MiniDrawerProps> = (props) => {
+export const MainNavigation: FC<MainNavigationProps> = (props) => {
   const [userData] = useLocalStorage<LogInMutationResponse>("userData");
   const [open, setOpen] = useIsDrawerOpen();
   const { pathname } = useLocation();
@@ -113,7 +113,7 @@ export const MiniDrawer: FC<MiniDrawerProps> = (props) => {
           )}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box flexGrow={1} padding={3}>
         <DrawerHeader />
         <Box padding={4}>{props.children}</Box>
       </Box>

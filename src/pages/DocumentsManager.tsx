@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { MiniDrawer } from "../layouts/MiniDrawer";
+import { MainNavigation } from "../layouts/MainNavigation";
 
 export const DocumentsManager: FC = () => {
-  return <MiniDrawer title="Manager dokumentów" />;
+  return <MainNavigation title="Manager dokumentów" />;
 };
