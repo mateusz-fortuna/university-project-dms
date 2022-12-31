@@ -7,6 +7,7 @@ import { DocumentsManager } from "../pages/DocumentsManager";
 import { Initiate } from "../pages/Initiate";
 import { Scan } from "../pages/Scan";
 import { AdminPanel } from "../pages/AdminPanel";
+import { Organization } from "../pages/Organization";
 
 const { routes } = config;
 
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
     path: routes.organization,
     element: (
       <RestrictedPage allowedRoles={["ADMIN", "USER"]}>
-        <Documents />
+        <Organization />
       </RestrictedPage>
     ),
   },
