@@ -99,7 +99,7 @@ export const Documents: FC = () => {
   const columns: GridColDef[] = [
     { field: "internalId", headerName: "Numer", width: 130 },
     { field: "runName", headerName: "Nazwa obiegu", width: 130 },
-    { field: "stageName", headerName: "Nazwa etapu", width: 150 },
+    { field: "stageName", headerName: "Nazwa etapu", width: 200 },
     { field: "lastRunAt", headerName: "Data przekazania", width: 130 },
     { field: "stageStatus", headerName: "Status", width: 130 },
     { field: "assignee", headerName: "Osoba przypisana", width: 150 },
