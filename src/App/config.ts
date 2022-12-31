@@ -7,5 +7,6 @@ export const config = {
     scan: "/scan",
     organization: "/organization",
     adminPanel: "/adminPanel",
-  } as const,
-};
+  },
+  roles: ["ADMIN", "USER", "GUEST"],
+} as const;

@@ -2,11 +2,10 @@ import { FC, PropsWithChildren } from "react";
 import { Navigate } from "react-router-dom";
 import { useLocalStorage } from "react-use";
 import { config } from "../App/config";
-import { Role } from "../mocks/responses/logInMutationResponse";
 import { LogInMutationResponse } from "../pages/logIn/useLogInMutation";
 
 interface RestrictedPageProps extends PropsWithChildren {
-  allowedRoles: Role[];
+  allowedRoles: Array<typeof config.roles[number]>;
 }
 
 export const RestrictedPage: FC<RestrictedPageProps> = ({

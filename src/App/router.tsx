@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
   {
     path: routes.documents,
     element: (
-      <RestrictedPage allowedRoles={["admin", "user"]}>
+      <RestrictedPage allowedRoles={["ADMIN", "USER"]}>
         <Documents />
       </RestrictedPage>
     ),
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
   {
     path: routes.documentsManager,
     element: (
-      <RestrictedPage allowedRoles={["admin", "user"]}>
+      <RestrictedPage allowedRoles={["ADMIN", "USER"]}>
         <DocumentsManager />
       </RestrictedPage>
     ),
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
   {
     path: routes.initiate,
     element: (
-      <RestrictedPage allowedRoles={["admin", "user"]}>
+      <RestrictedPage allowedRoles={["ADMIN", "USER"]}>
         <Initiate />
       </RestrictedPage>
     ),
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
   {
     path: routes.scan,
     element: (
-      <RestrictedPage allowedRoles={["admin", "user"]}>
+      <RestrictedPage allowedRoles={["ADMIN", "USER"]}>
         <Scan />
       </RestrictedPage>
     ),
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
   {
     path: routes.organization,
     element: (
-      <RestrictedPage allowedRoles={["admin", "user"]}>
+      <RestrictedPage allowedRoles={["ADMIN", "USER"]}>
         <Documents />
       </RestrictedPage>
     ),
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
   {
     path: routes.adminPanel,
     element: (
-      <RestrictedPage allowedRoles={["admin"]}>
+      <RestrictedPage allowedRoles={["ADMIN"]}>
         <AdminPanel />
       </RestrictedPage>
     ),

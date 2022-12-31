@@ -5,15 +5,14 @@ import {
   Credentials,
   LogInMutationResponse,
 } from "../../pages/logIn/useLogInMutation";
-
-export type Role = "admin" | "user" | "guest";
+import { config } from "../../App/config";
 
 export interface RegisteredUser {
   id: string;
   name: string;
   surname: string;
   credentials: Credentials;
-  role: Role;
+  role: typeof config.roles[number];
 }
 
 export const registeredUsers: RegisteredUser[] = [
@@ -22,14 +21,14 @@ export const registeredUsers: RegisteredUser[] = [
     name: "Jan",
     surname: "Kowalski",
     credentials: { password: "admin", username: "admin" },
-    role: "admin",
+    role: "ADMIN",
   },
   {
     id: "2",
     name: "Marek",
     surname: "Nowak",
     credentials: { password: "user", username: "user" },
-    role: "user",
+    role: "USER",
   },
 ];
 

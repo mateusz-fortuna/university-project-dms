@@ -103,7 +103,7 @@ export const MiniDrawer: FC<MiniDrawerProps> = (props) => {
             onClick={() => navigate(routes.organization)}
           />
           <Divider />
-          {userData?.role === "admin" && (
+          {userData?.role === "ADMIN" && (
             <DrawerItem
               text="Panel administratora"
               icon={<AdminPanelIcon color="primary" />}
