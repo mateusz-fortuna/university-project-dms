@@ -1,4 +1,4 @@
-import { DocumentRun } from "../documentRunQueryResponse";
+import { DocumentRun } from "../documentRunsQueryResponse";
 import { stages } from "../documentRunStageQueryResponse/documentRunStages";
 
 const getStageByRunId = (runId: DocumentRun["id"]) => {

@@ -1,8 +1,12 @@
 import { Document } from "../documentsQueryResponse";
 import { format, subDays } from "date-fns";
+import { getRandomIntBetween } from "../../../helpers/getRandomIntBetween";
+import { documentsHistory } from "../documentHistoryQueryResponse/documentsHistory";
 
-const getRandomIntBetween = (min: number, max: number) => {
-  return Math.floor(Math.random() * max) + min;
+const getHistoryByDocumentId = (documentId: Document["id"]) => {
+  return documentsHistory.filter(
+    (history) => history.documentId === documentId
+  );
 };
 
 const today = new Date();
@@ -24,7 +28,7 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 30)),
       "yyyy-MM-dd"
     ),
-    history: [],
+    history: getHistoryByDocumentId("1"),
   },
   {
     id: "2",
@@ -42,7 +46,7 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 30)),
       "yyyy-MM-dd"
     ),
-    history: [],
+    history: getHistoryByDocumentId("1"),
   },
   {
     id: "3",
@@ -60,7 +64,7 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 30)),
       "yyyy-MM-dd"
     ),
-    history: [],
+    history: getHistoryByDocumentId("1"),
   },
   {
     id: "4",
@@ -78,6 +82,6 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 30)),
       "yyyy-MM-dd"
     ),
-    history: [],
+    history: getHistoryByDocumentId("1"),
   },
 ];

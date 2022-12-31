@@ -1,4 +1,4 @@
-import { DocumentRunStage } from "../documentRunStageQueryResponse";
+import { DocumentRunStage } from "../documentRunStagesQueryResponse";
 
 export const stages: DocumentRunStage[] = [
   {

@@ -1,3 +1,18 @@
+import { format, subDays } from "date-fns";
+import { getRandomIntBetween } from "../../../helpers/getRandomIntBetween";
 import { DocumentHistory } from "../documentHistoryQueryResponse";
 
-export const documentsHistory: DocumentHistory[] = [];
+const today = new Date();
+
+export const documentsHistory: DocumentHistory[] = [
+  {
+    id: "1",
+    assigneeId: "1",
+    createdAt: format(
+      subDays(today, getRandomIntBetween(1, 365)),
+      "yyyy-MM-dd"
+    ),
+    documentId: "1",
+    stageId: "1",
+  },
+];

@@ -1,8 +1,8 @@
 import { context } from "msw";
 import { documentsHistory } from "./documentHistoryQueryResponse/documentsHistory";
-import { DocumentRunStage } from "./documentRunStageQueryResponse";
+import { DocumentRunStage } from "./documentRunStagesQueryResponse";
 import { Document } from "./documentsQueryResponse";
-import { RegisteredUser } from "./logInMutationResponse";
+import { RegisteredUser } from "./registeredUsersQueryResponse";
 
 export interface DocumentHistory {
   id: string;

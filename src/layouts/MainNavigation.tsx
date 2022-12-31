@@ -1,7 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import {
   Box,
-  CssBaseline,
   Toolbar,
   IconButton,
   Typography,
@@ -39,8 +38,7 @@ export const MainNavigation: FC<MainNavigationProps> = (props) => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
+    <Box display="flex">
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -115,7 +113,7 @@ export const MainNavigation: FC<MainNavigationProps> = (props) => {
       </Drawer>
       <Box flexGrow={1} padding={3}>
         <DrawerHeader />
-        <Box padding={4}>{props.children}</Box>
+        {props.children}
       </Box>
     </Box>
   );

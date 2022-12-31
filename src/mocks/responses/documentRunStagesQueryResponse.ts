@@ -1,5 +1,5 @@
 import { context } from "msw";
-import { DocumentRun } from "./documentRunQueryResponse";
+import { DocumentRun } from "./documentRunsQueryResponse";
 import { stages } from "./documentRunStageQueryResponse/documentRunStages";
 
 export interface DocumentRunStage {
@@ -9,7 +9,7 @@ export interface DocumentRunStage {
   status: "IN_PROGRESS" | "DONE";
 }
 
-export const documentRunStageQueryResponse = (
+export const documentRunStagesQueryResponse = (
   runId?: DocumentRunStage["runId"]
 ) => {
   if (!runId) {
