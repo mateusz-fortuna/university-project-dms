@@ -115,7 +115,7 @@ export const MiniDrawer: FC<MiniDrawerProps> = (props) => {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {props.children}
+        <Box padding={4}>{props.children}</Box>
       </Box>
     </Box>
   );
