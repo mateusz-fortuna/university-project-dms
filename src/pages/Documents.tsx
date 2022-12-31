@@ -17,6 +17,7 @@ import { ErrorModal } from "../ui-components/ErrorModal";
 import { CollapsableListButton } from "./documents/CollapsableListButton";
 import RunIcon from "@mui/icons-material/UploadFile";
 import HomeIcon from "@mui/icons-material/Home";
+import { DataGrid } from "@mui/x-data-grid";
 
 export const Documents: FC = () => {
   const documentsQuery = useDocumentsQuery();
@@ -63,33 +64,38 @@ export const Documents: FC = () => {
     );
   }
 
+  const renderFoldersTree = () => (
+    <List>
+      <ListItemButton>
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dokumenty" />
+      </ListItemButton>
+      <Box paddingLeft={4}>
+        {documentRunCategoriesQuery.data.map((category) => (
+          <CollapsableListButton key={category.id} title={category.name}>
+            {documentRunsQuery.data
+              .filter((run) => run.categoryId === category.id)
+              .map((run) => (
+                <ListItemButton key={run.id} sx={{ paddingLeft: 4 }}>
+                  <ListItemIcon>
+                    <RunIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={run.name} />
+                </ListItemButton>
+              ))}
+          </CollapsableListButton>
+        ))}
+      </Box>
+    </List>
+  );
+
   return (
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
-        <List>
-          <ListItemButton>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Dokumenty" />
-          </ListItemButton>
-          <Box paddingLeft={4}>
-            {documentRunCategoriesQuery.data.map((category) => (
-              <CollapsableListButton key={category.id} title={category.name}>
-                {documentRunsQuery.data
-                  .filter((run) => run.categoryId === category.id)
-                  .map((run) => (
-                    <ListItemButton key={run.id} sx={{ paddingLeft: 4 }}>
-                      <ListItemIcon>
-                        <RunIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={run.name} />
-                    </ListItemButton>
-                  ))}
-              </CollapsableListButton>
-            ))}
-          </Box>
-        </List>
+        {renderFoldersTree()}
+        <DataGrid columns={[]} rows={[]} />
       </Box>
     </MainNavigation>
   );
