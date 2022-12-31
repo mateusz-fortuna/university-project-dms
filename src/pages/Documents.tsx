@@ -105,14 +105,9 @@ export const Documents: FC = () => {
     { field: "assignee", headerName: "Osoba przypisana", width: 150 },
   ];
 
-  console.log(
-    tableData,
-    documentsQuery.data,
-    documentRunsQuery.data,
-    documentRunStagesQuery.data,
-    documentRunCategoriesQuery.data,
-    registeredUsersQuery.data
-  );
+  const tableWidth = columns
+    .map((columns) => columns.width ?? 0)
+    .reduce((sum, currentColumnWidth) => sum + currentColumnWidth);
 
   const renderFoldersTree = () => (
     <List>
@@ -145,13 +140,7 @@ export const Documents: FC = () => {
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
         {renderFoldersTree()}
-        <Box
-          height="500px"
-          width={columns
-            .map((columns) => columns.width ?? 0)
-            .reduce((sum, currentColumnWidth) => sum + currentColumnWidth)}
-          margin="0 4"
-        >
+        <Box height="500px" width={tableWidth} margin="0 4">
           <DataGrid columns={columns} rows={tableData} />
         </Box>
       </Box>
