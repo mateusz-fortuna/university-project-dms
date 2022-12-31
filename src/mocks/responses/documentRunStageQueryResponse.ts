@@ -16,7 +16,7 @@ export const documentRunStageQueryResponse = (
     return context.json(stages);
   }
 
-  const runStages = stages.find((stage) => stage.runId === runId);
+  const runStages = stages.filter((stage) => stage.runId === runId);
 
-  return runStages ? context.json(runStages) : context.status(404);
+  return context.json(runStages);
 };

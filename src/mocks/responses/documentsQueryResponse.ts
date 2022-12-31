@@ -1,33 +1,24 @@
 import { context } from "msw";
-import { DocumentRun } from "./documentRunQueryResponse";
-import { DocumentRunStage } from "./documentRunStageQueryResponse";
+import { DocumentHistory } from "./documentHistoryQueryResponse";
+import { documents } from "./documentQueryResponse/documents";
 import { RegisteredUser } from "./logInMutationResponse";
-
-export interface DocumentHistory {
-  id: string;
-  stageId: DocumentRunStage["id"];
-  createdAt: Date;
-  assigneeId: RegisteredUser["id"];
-}
 
 export interface Document {
   id: string;
   internalId: string;
-  runId: DocumentRun["id"];
   authorId: RegisteredUser["id"];
   name: string;
-  createdAt: Date;
-  modifiedAt: Date;
+  createdAt: string;
+  modifiedAt: string;
   history: DocumentHistory[];
 }
 
-export interface DocumentCategories {
-  uncategorized: Array<DocumentRun["id"]>;
-  projects: Array<DocumentRun["id"]>;
-  internalDocuments: Array<DocumentRun["id"]>;
-  contracts: Array<DocumentRun["id"]>;
-}
+export const documentsQueryResponse = (documentId?: Document["id"]) => {
+  if (!documentId) {
+    return context.json(documents);
+  }
 
-export const documentsQueryResponse = () => {
-  return context.json([]);
+  const document = documents.filter((document) => document.id === documentId);
+
+  return context.json(document);
 };
