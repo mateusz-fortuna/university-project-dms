@@ -82,12 +82,14 @@ export const MainNavigation: FC<MainNavigationProps> = (props) => {
             isSelected={pathname === routes.documentsManager}
             onClick={() => navigate(routes.documentsManager)}
           />
-          <DrawerItem
-            text="Inicjowanie obiegu"
-            icon={<InitiateIcon color="primary" />}
-            isSelected={pathname === routes.initiate}
-            onClick={() => navigate(routes.initiate)}
-          />
+          {userData?.role === "ADMIN" && (
+            <DrawerItem
+              text="Inicjowanie obiegu"
+              icon={<InitiateIcon color="primary" />}
+              isSelected={pathname === routes.initiate}
+              onClick={() => navigate(routes.initiate)}
+            />
+          )}
           <DrawerItem
             text="Skanowanie OCR"
             icon={<ScanIcon color="primary" />}
