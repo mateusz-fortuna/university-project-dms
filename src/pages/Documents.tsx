@@ -15,8 +15,8 @@ import { useDocumentRunsQuery } from "./documents/hooks/useDocumentRunsQuery";
 import { useDocumentRunCategoriesQuery } from "./documents/hooks/useDocumentRunCategoriesQuery";
 import { ErrorModal } from "../ui-components/ErrorModal";
 import { CollapsableListButton } from "./documents/CollapsableListButton";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { transformDocumentsData } from "./documents/helpers/transformDocumentsData";
+import { DocumentsTable } from "./documents/DocumentsTable";
 import RunIcon from "@mui/icons-material/UploadFile";
 import HomeIcon from "@mui/icons-material/Home";
 
@@ -64,19 +64,6 @@ export const Documents: FC = () => {
     documentRunsQuery.data
   );
 
-  const columns: GridColDef[] = [
-    { field: "internalId", headerName: "Numer", width: 130 },
-    { field: "runName", headerName: "Nazwa obiegu", width: 130 },
-    { field: "stageName", headerName: "Nazwa etapu", width: 200 },
-    { field: "lastRunAt", headerName: "Data przekazania", width: 130 },
-    { field: "stageStatus", headerName: "Status", width: 130 },
-    { field: "assignee", headerName: "Osoba przypisana", width: 150 },
-  ];
-
-  /*  const tableWidth = columns
-    .map((columns) => columns.width ?? 0)
-    .reduce((sum, currentColumnWidth) => sum + currentColumnWidth); */
-
   const renderFoldersTree = () => (
     <List>
       <ListItemButton>
@@ -109,7 +96,7 @@ export const Documents: FC = () => {
       <Box display="flex">
         {renderFoldersTree()}
         <Box width="100%" marginLeft={4}>
-          <DataGrid autoHeight columns={columns} rows={tableData} />
+          <DocumentsTable data={tableData} />
         </Box>
       </Box>
     </MainNavigation>
