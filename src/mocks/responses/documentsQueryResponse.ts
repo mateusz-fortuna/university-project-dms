@@ -11,6 +11,7 @@ export interface Document {
   createdAt: string;
   modifiedAt: string;
   history: DocumentHistory[];
+  path: string;
 }
 
 export const documentsQueryResponse = (documentId?: Document["id"]) => {

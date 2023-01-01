@@ -29,6 +29,7 @@ export const documents: Document[] = [
       "yyyy-MM-dd"
     ),
     history: getHistoryByDocumentId("1"),
+    path: "Dokumenty/Marek Nowak/Zgłoszenia",
   },
   {
     id: "2",
@@ -47,6 +48,7 @@ export const documents: Document[] = [
       "yyyy-MM-dd"
     ),
     history: getHistoryByDocumentId("1"),
+    path: "Dokumenty/Marek Nowak/Zgłoszenia",
   },
   {
     id: "3",
@@ -54,7 +56,7 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 365)),
       "dd/MM/yyyy"
     )}`,
-    authorId: "1",
+    authorId: "2",
     name: "Faktura za usługi informatyczne - Kowalski Piotr.docx",
     createdAt: format(
       subDays(today, getRandomIntBetween(1, 365)),
@@ -65,6 +67,7 @@ export const documents: Document[] = [
       "yyyy-MM-dd"
     ),
     history: getHistoryByDocumentId("4"),
+    path: "Dokumenty/Jan Kowalski/Faktury",
   },
   {
     id: "4",
@@ -72,7 +75,7 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 365)),
       "dd/MM/yyyy"
     )}`,
-    authorId: "1",
+    authorId: "2",
     name: "Faktura za internet.docx",
     createdAt: format(
       subDays(today, getRandomIntBetween(1, 365)),
@@ -83,5 +86,6 @@ export const documents: Document[] = [
       "yyyy-MM-dd"
     ),
     history: getHistoryByDocumentId("4"),
+    path: "Dokumenty/Jan Kowalski/Faktury",
   },
 ];
