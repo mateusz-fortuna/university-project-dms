@@ -96,6 +96,126 @@ export const Scan: FC = () => {
     );
   };
 
+  const renderTable = () => {
+    return (
+      <TableContainer component={Paper}>
+        <Table aria-label="documents table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Lp.</TableCell>
+              <TableCell>Towar</TableCell>
+              <TableCell>Ilość</TableCell>
+              <TableCell>Cena netto</TableCell>
+              <TableCell>Wartość netto</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow
+              sx={{
+                "&:last-child td, &:last-child th": { border: 0 },
+              }}
+            >
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="lp1"
+                  defaultValue="1"
+                  render={({ field }) => (
+                    <TextField {...field} sx={{ width: 50 }} />
+                  )}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="item1"
+                  defaultValue="Oprogramowanie"
+                  render={({ field }) => <TextField {...field} />}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="quantity1"
+                  defaultValue="1 szt."
+                  render={({ field }) => (
+                    <TextField {...field} sx={{ width: 75 }} />
+                  )}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="netPrice1"
+                  defaultValue="16200"
+                  render={({ field }) => <TextField {...field} />}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="finalPrice1"
+                  defaultValue="12950"
+                  render={({ field }) => <TextField {...field} />}
+                />
+              </TableCell>
+            </TableRow>
+            <TableRow
+              sx={{
+                "&:last-child td, &:last-child th": { border: 0 },
+              }}
+            >
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="lp2"
+                  defaultValue="2"
+                  render={({ field }) => (
+                    <TextField {...field} sx={{ width: 50 }} />
+                  )}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="item2"
+                  defaultValue="Dostawa"
+                  render={({ field }) => <TextField {...field} />}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="quantity2"
+                  defaultValue="1 szt."
+                  render={({ field }) => (
+                    <TextField {...field} sx={{ width: 75 }} />
+                  )}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="netPrice2"
+                  defaultValue="10"
+                  render={({ field }) => <TextField {...field} />}
+                />
+              </TableCell>
+              <TableCell>
+                <Controller
+                  control={control}
+                  name="finalPrice2"
+                  defaultValue="10"
+                  render={({ field }) => <TextField {...field} />}
+                />
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
+  };
+
   return (
     <MainNavigation title="Skanowanie OCR">
       <Stack padding={4} gap={4}>
@@ -112,125 +232,10 @@ export const Scan: FC = () => {
 
         <Box display="flex" gap={4}>
           <img src={scanSrc} height={450} alt="invoice" />
+
           <Stack gap={4} divider={<Divider />}>
             {renderForm()}
-
-            <TableContainer component={Paper}>
-              <Table aria-label="documents table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Lp.</TableCell>
-                    <TableCell>Towar</TableCell>
-                    <TableCell>Ilość</TableCell>
-                    <TableCell>Cena netto</TableCell>
-                    <TableCell>Wartość netto</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  <TableRow
-                    sx={{
-                      "&:last-child td, &:last-child th": { border: 0 },
-                    }}
-                  >
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="lp1"
-                        defaultValue="1"
-                        render={({ field }) => (
-                          <TextField {...field} sx={{ width: 50 }} />
-                        )}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="item1"
-                        defaultValue="Oprogramowanie"
-                        render={({ field }) => <TextField {...field} />}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="quantity1"
-                        defaultValue="1 szt."
-                        render={({ field }) => (
-                          <TextField {...field} sx={{ width: 75 }} />
-                        )}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="netPrice1"
-                        defaultValue="16200"
-                        render={({ field }) => <TextField {...field} />}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="finalPrice1"
-                        defaultValue="12950"
-                        render={({ field }) => <TextField {...field} />}
-                      />
-                    </TableCell>
-                  </TableRow>
-                  <TableRow
-                    sx={{
-                      "&:last-child td, &:last-child th": { border: 0 },
-                    }}
-                  >
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="lp2"
-                        defaultValue="2"
-                        render={({ field }) => (
-                          <TextField {...field} sx={{ width: 50 }} />
-                        )}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="item2"
-                        defaultValue="Dostawa"
-                        render={({ field }) => <TextField {...field} />}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="quantity2"
-                        defaultValue="1 szt."
-                        render={({ field }) => (
-                          <TextField {...field} sx={{ width: 75 }} />
-                        )}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="netPrice2"
-                        defaultValue="10"
-                        render={({ field }) => <TextField {...field} />}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Controller
-                        control={control}
-                        name="finalPrice2"
-                        defaultValue="10"
-                        render={({ field }) => <TextField {...field} />}
-                      />
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-
+            {renderTable()}
             <Box>
               <Button variant="contained">
                 <Typography>Zapisz skan</Typography>
