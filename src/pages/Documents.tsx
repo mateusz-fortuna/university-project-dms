@@ -16,9 +16,9 @@ import { useDocumentRunCategoriesQuery } from "./documents/hooks/useDocumentRunC
 import { ErrorModal } from "../ui-components/ErrorModal";
 import { CollapsableListButton } from "./documents/CollapsableListButton";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { transformDocumentsData } from "./documents/helpers/transformDocumentsData";
 import RunIcon from "@mui/icons-material/UploadFile";
 import HomeIcon from "@mui/icons-material/Home";
-import { nanoid } from "nanoid";
 
 export const Documents: FC = () => {
   const documentsQuery = useDocumentsQuery();
@@ -52,48 +52,16 @@ export const Documents: FC = () => {
   if (isNoData) {
     return (
       <MainNavigation title="Dokumenty w obiegu">
-        <ErrorModal title="Ładowanie daych" description="Brak danych" />
+        <ErrorModal title="Dokumenty w obiegu" description="Brak danych" />
       </MainNavigation>
     );
   }
 
-  const tableData = documentsQuery.data.map(
-    ({ internalId, history, authorId }) => {
-      const stageId = history[0].stageId;
-      const stage = documentRunStagesQuery.data.find(
-        (stage) => stage.id === stageId
-      );
-
-      if (!stage) {
-        return {
-          id: nanoid(),
-          internalId,
-          runName: "-",
-          stageName: "-",
-          lastRunAt: "-",
-          stageStatus: "-",
-          assignee:
-            registeredUsersQuery.data.find((user) => user.id === authorId)
-              ?.name ?? "-",
-        };
-      }
-
-      const run = documentRunsQuery.data.find((run) => run.id === stage.runId);
-
-      return {
-        id: nanoid(),
-        internalId,
-        runName: run?.name ?? "-",
-        stageName: stage.name,
-        lastRunAt: history[history.length - 1].createdAt,
-        stageStatus:
-          run?.stages?.find((runStage) => runStage.id === stage.id)?.status ??
-          "-",
-        assignee:
-          registeredUsersQuery.data.find((user) => user.id === authorId)
-            ?.name ?? "-",
-      };
-    }
+  const tableData = transformDocumentsData(
+    documentsQuery.data,
+    documentRunStagesQuery.data,
+    registeredUsersQuery.data,
+    documentRunsQuery.data
   );
 
   const columns: GridColDef[] = [
@@ -117,7 +85,7 @@ export const Documents: FC = () => {
         </ListItemIcon>
         <ListItemText primary="Dokumenty" />
       </ListItemButton>
-      <Box paddingLeft={4}>
+      <Box paddingLeft={2}>
         {documentRunCategoriesQuery.data.map((category) => (
           <CollapsableListButton key={category.id} title={category.name}>
             {documentRunsQuery.data
@@ -140,8 +108,8 @@ export const Documents: FC = () => {
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
         {renderFoldersTree()}
-        <Box height="500px" width={tableWidth} margin="0 4">
-          <DataGrid columns={columns} rows={tableData} />
+        <Box width={tableWidth} margin={4}>
+          <DataGrid autoHeight columns={columns} rows={tableData} />
         </Box>
       </Box>
     </MainNavigation>

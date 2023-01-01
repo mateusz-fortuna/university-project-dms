@@ -6,7 +6,7 @@ export interface DocumentRunStage {
   id: string;
   runId: DocumentRun["id"];
   name: string;
-  status: "IN_PROGRESS" | "DONE";
+  status: "Niezakończony" | "Zakończony";
 }
 
 export const documentRunStagesQueryResponse = (

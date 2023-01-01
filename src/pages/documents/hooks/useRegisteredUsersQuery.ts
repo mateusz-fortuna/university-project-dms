@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Document } from "../../../mocks/responses/documentsQueryResponse";
+import { RegisteredUser } from "../../../mocks/responses/registeredUsersQueryResponse";
 import axios, { AxiosError } from "axios";
 
 export const useRegisteredUsersQuery = () => {
@@ -9,5 +9,5 @@ export const useRegisteredUsersQuery = () => {
     return data;
   };
 
-  return useQuery<Document[], AxiosError>(queryKey, queryFn);
+  return useQuery<RegisteredUser[], AxiosError>(queryKey, queryFn);
 };
