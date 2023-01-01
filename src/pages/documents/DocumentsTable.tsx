@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import {
   TableContainer,
   Paper,
@@ -9,15 +9,24 @@ import {
   TableBody,
   TableFooter,
   TablePagination,
+  useTheme,
 } from "@mui/material";
 import { transformDocumentsData } from "./helpers/transformDocumentsData";
 import { TablePaginationActions } from "./TablePaginationActions";
+import { Document } from "../../mocks/responses/documentsQueryResponse";
 
 interface DocumentsTableProps {
   data: ReturnType<typeof transformDocumentsData>;
+  selectedDocumentId: Document["id"];
+  setSelectedDocumentId: Dispatch<SetStateAction<Document["id"]>>;
 }
 
-export const DocumentsTable: FC<DocumentsTableProps> = ({ data }) => {
+export const DocumentsTable: FC<DocumentsTableProps> = ({
+  data,
+  selectedDocumentId,
+  setSelectedDocumentId,
+}) => {
+  const { palette } = useTheme();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -58,7 +67,12 @@ export const DocumentsTable: FC<DocumentsTableProps> = ({ data }) => {
           ).map((row) => (
             <TableRow
               key={row.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{
+                "&:last-child td, &:last-child th": { border: 0 },
+                backgroundColor:
+                  selectedDocumentId === row.id ? palette.grey[100] : undefined,
+              }}
+              onClick={() => setSelectedDocumentId(row.id)}
             >
               <TableCell component="th" scope="row">
                 {row.internalId}

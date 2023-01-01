@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import {
   Box,
   List,
@@ -19,6 +19,7 @@ import { transformDocumentsData } from "./documents/helpers/transformDocumentsDa
 import { DocumentsTable } from "./documents/DocumentsTable";
 import RunIcon from "@mui/icons-material/UploadFile";
 import HomeIcon from "@mui/icons-material/Home";
+import { Document } from "../mocks/responses/documentsQueryResponse";
 
 export const Documents: FC = () => {
   const documentsQuery = useDocumentsQuery();
@@ -56,6 +57,9 @@ export const Documents: FC = () => {
       </MainNavigation>
     );
   }
+
+  const [selectedDocumentId, setSelectedDocumentId] =
+    useState<Document["id"]>("");
 
   const tableData = transformDocumentsData(
     documentsQuery.data,
@@ -96,7 +100,11 @@ export const Documents: FC = () => {
       <Box display="flex">
         {renderFoldersTree()}
         <Box width="100%" marginLeft={4}>
-          <DocumentsTable data={tableData} />
+          <DocumentsTable
+            data={tableData}
+            selectedDocumentId={selectedDocumentId}
+            setSelectedDocumentId={setSelectedDocumentId}
+          />
         </Box>
       </Box>
     </MainNavigation>
