@@ -34,7 +34,6 @@ import {
   ContentPaste,
   Cloud,
 } from "@mui/icons-material";
-
 export const DocumentsManager: FC = () => {
   const { palette } = useTheme();
   const [selectedDocumentId, setSelectedDocumentId] =
@@ -91,7 +90,7 @@ export const DocumentsManager: FC = () => {
         <ListItemText primary="Dokumenty" />
       </ListItemButton>
       <Box paddingLeft={2}>
-        <CollapsableListButton title="Marek Nowak">
+        <CollapsableListButton title="Marek Nowak" icon={<FolderIcon />}>
           <ListItemButton sx={{ paddingLeft: 6 }} selected>
             <ListItemIcon>
               <FolderIcon />
@@ -99,7 +98,7 @@ export const DocumentsManager: FC = () => {
             <ListItemText primary="Zgłoszenia" />
           </ListItemButton>
         </CollapsableListButton>
-        <CollapsableListButton title="Jan Kolwalski">
+        <CollapsableListButton title="Jan Kolwalski" icon={<FolderIcon />}>
           <ListItemButton sx={{ paddingLeft: 6 }}>
             <ListItemIcon>
               <FolderIcon />

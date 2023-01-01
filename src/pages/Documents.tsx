@@ -24,6 +24,7 @@ import { Document } from "../mocks/responses/documentsQueryResponse";
 import RunIcon from "@mui/icons-material/UploadFile";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
+import FolderIcon from "@mui/icons-material/Folder";
 
 export const Documents: FC = () => {
   const [selectedDocumentId, setSelectedDocumentId] =
@@ -88,7 +89,11 @@ export const Documents: FC = () => {
       </ListItemButton>
       <Box paddingLeft={2}>
         {documentRunCategoriesQuery.data.map((category) => (
-          <CollapsableListButton key={category.id} title={category.name}>
+          <CollapsableListButton
+            key={category.id}
+            title={category.name}
+            icon={<FolderIcon />}
+          >
             {documentRunsQuery.data
               .filter((run) => run.categoryId === category.id)
               .map((run) => (

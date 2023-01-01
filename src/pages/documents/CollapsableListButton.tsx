@@ -1,4 +1,4 @@
-import { FC, useState, PropsWithChildren } from "react";
+import { FC, useState, PropsWithChildren, ReactNode } from "react";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import {
   ListItemButton,
@@ -7,24 +7,23 @@ import {
   Collapse,
   List,
 } from "@mui/material";
-import FolderIcon from "@mui/icons-material/Folder";
 
 interface CollapsableListButtonProps extends PropsWithChildren {
   title: string;
+  icon: ReactNode;
 }
 
 export const CollapsableListButton: FC<CollapsableListButtonProps> = ({
   children,
   title,
+  icon,
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <>
       <ListItemButton onClick={() => setIsCollapsed((state) => !state)}>
-        <ListItemIcon>
-          <FolderIcon />
-        </ListItemIcon>
+        <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={title} />
         {isCollapsed ? <ExpandMore /> : <ExpandLess />}
       </ListItemButton>
