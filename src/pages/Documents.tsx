@@ -73,9 +73,9 @@ export const Documents: FC = () => {
     { field: "assignee", headerName: "Osoba przypisana", width: 150 },
   ];
 
-  const tableWidth = columns
+  /*  const tableWidth = columns
     .map((columns) => columns.width ?? 0)
-    .reduce((sum, currentColumnWidth) => sum + currentColumnWidth);
+    .reduce((sum, currentColumnWidth) => sum + currentColumnWidth); */
 
   const renderFoldersTree = () => (
     <List>
@@ -91,7 +91,7 @@ export const Documents: FC = () => {
             {documentRunsQuery.data
               .filter((run) => run.categoryId === category.id)
               .map((run) => (
-                <ListItemButton key={run.id} sx={{ paddingLeft: 4 }}>
+                <ListItemButton key={run.id} sx={{ paddingLeft: 6 }}>
                   <ListItemIcon>
                     <RunIcon />
                   </ListItemIcon>
@@ -108,7 +108,7 @@ export const Documents: FC = () => {
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
         {renderFoldersTree()}
-        <Box width={tableWidth} margin={4}>
+        <Box width="100%" marginLeft={4}>
           <DataGrid autoHeight columns={columns} rows={tableData} />
         </Box>
       </Box>
