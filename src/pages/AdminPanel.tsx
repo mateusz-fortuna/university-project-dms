@@ -6,7 +6,7 @@ export const AdminPanel: FC = () => {
   return (
     <MainNavigation title="Panel administratora">
       <Typography>Możliwość zmiany nazwy plików</Typography>
-      <Typography>Możliwość definiowania obiegów wraz z ich etapami</Typography>
+      <Typography>Możliwość nadawania uprawnień plikom</Typography>
       <Typography>Możliwość zarządzania użytkownikami</Typography>
     </MainNavigation>
   );
