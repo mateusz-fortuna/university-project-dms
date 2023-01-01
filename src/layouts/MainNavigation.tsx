@@ -111,7 +111,7 @@ export const MainNavigation: FC<MainNavigationProps> = (props) => {
           )}
         </List>
       </Drawer>
-      <Box flexGrow={1} padding={3}>
+      <Box flexGrow={1}>
         <DrawerHeader />
         {props.children}
       </Box>

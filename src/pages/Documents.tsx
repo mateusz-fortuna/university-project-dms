@@ -73,8 +73,14 @@ export const Documents: FC = () => {
   );
 
   const renderFoldersTree = () => (
-    <List>
-      <ListItemButton>
+    <List
+      sx={{
+        borderRight: "1px solid rgba(0, 0, 0, 0.12)",
+        minWidth: 380,
+        height: "calc(100vh - 64px)",
+      }}
+    >
+      <ListItemButton selected>
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>
@@ -127,7 +133,7 @@ export const Documents: FC = () => {
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
         {renderFoldersTree()}
-        <Stack gap={4} marginLeft={4}>
+        <Stack gap={4} padding={4} width="100%">
           {renderSearchInput()}
           <Box width="100%" marginRight={4}>
             <DocumentsTable
