@@ -1,10 +1,13 @@
 import { FC, useState } from "react";
 import {
+  Autocomplete,
   Box,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
+  TextField,
 } from "@mui/material";
 import { MainNavigation } from "../layouts/MainNavigation";
 import { Loader } from "../ui-components/Loader";
@@ -17,9 +20,10 @@ import { ErrorModal } from "../ui-components/ErrorModal";
 import { CollapsableListButton } from "./documents/CollapsableListButton";
 import { transformDocumentsData } from "./documents/helpers/transformDocumentsData";
 import { DocumentsTable } from "./documents/DocumentsTable";
+import { Document } from "../mocks/responses/documentsQueryResponse";
 import RunIcon from "@mui/icons-material/UploadFile";
 import HomeIcon from "@mui/icons-material/Home";
-import { Document } from "../mocks/responses/documentsQueryResponse";
+import SearchIcon from "@mui/icons-material/Search";
 
 export const Documents: FC = () => {
   const documentsQuery = useDocumentsQuery();
@@ -95,17 +99,44 @@ export const Documents: FC = () => {
     </List>
   );
 
+  const renderSearchInput = () => {
+    return (
+      <Box width="300px" alignSelf="flex-end">
+        <Autocomplete
+          fullWidth
+          freeSolo
+          disableClearable
+          options={documentsQuery.data.map((document) => document.internalId)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Wyszukaj dokument po numerze"
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+                endAdornment: <SearchIcon />,
+              }}
+            />
+          )}
+        />
+      </Box>
+    );
+  };
+
   return (
     <MainNavigation title="Dokumenty w obiegu">
       <Box display="flex">
         {renderFoldersTree()}
-        <Box width="100%" marginLeft={4}>
-          <DocumentsTable
-            data={tableData}
-            selectedDocumentId={selectedDocumentId}
-            setSelectedDocumentId={setSelectedDocumentId}
-          />
-        </Box>
+        <Stack gap={4} marginLeft={4}>
+          {renderSearchInput()}
+          <Box width="100%" marginRight={4}>
+            <DocumentsTable
+              data={tableData}
+              selectedDocumentId={selectedDocumentId}
+              setSelectedDocumentId={setSelectedDocumentId}
+            />
+          </Box>
+        </Stack>
       </Box>
     </MainNavigation>
   );
