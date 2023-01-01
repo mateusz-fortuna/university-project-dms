@@ -93,6 +93,7 @@ export const DocumentsTable: FC<DocumentsTableProps> = ({
         <TableFooter>
           <TableRow>
             <TablePagination
+              sx={{ display: "inline" }}
               rowsPerPageOptions={[
                 10,
                 25,

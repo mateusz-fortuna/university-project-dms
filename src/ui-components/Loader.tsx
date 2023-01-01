@@ -4,7 +4,13 @@ import { FC, PropsWithChildren } from "react";
 
 export const Loader: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
+    <Box
+      padding={8}
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      gap={2}
+    >
       <CssVarsProvider>
         <CircularProgress />
       </CssVarsProvider>
