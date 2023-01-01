@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffectOnce } from "react-use";
 
-export const useIsImageLoaded = (src: string) => {
+export const useIsImageLoading = (src: string) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   useEffectOnce(() => {

@@ -8,9 +8,25 @@ import {
   TimelineItem,
   TimelineSeparator,
 } from "@mui/lab";
+import { useIsImageLoading } from "./scan/hooks/useIsImageLoading";
+import { Loader } from "../ui-components/Loader";
 import Avatar from "@mui/material/Avatar";
 
 export const Organization: FC = () => {
+  const bossImageSrc = "/assets/images/kowalski.jpg";
+  const workerImageSrc = "/assets/images/nowak.jpg";
+
+  const isBossAvatarLoading = useIsImageLoading(bossImageSrc);
+  const isWorkerAvatarLoading = useIsImageLoading(workerImageSrc);
+
+  if (isBossAvatarLoading || isWorkerAvatarLoading) {
+    return (
+      <MainNavigation title="Struktura organizacyjna">
+        <Loader>Ładowanie danych...</Loader>
+      </MainNavigation>
+    );
+  }
+
   return (
     <MainNavigation title="Struktura organizacyjna">
       <Box
@@ -22,7 +38,7 @@ export const Organization: FC = () => {
         <Timeline>
           <TimelineItem>
             <TimelineSeparator>
-              <Avatar src="/assets/images/kowalski.jpg" alt="Boss" />
+              <Avatar src={bossImageSrc} alt="Boss" />
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
@@ -31,7 +47,7 @@ export const Organization: FC = () => {
           </TimelineItem>
           <TimelineItem>
             <TimelineSeparator>
-              <Avatar src="/assets/images/nowak.jpg" alt="Worker" />
+              <Avatar src={workerImageSrc} alt="Worker" />
             </TimelineSeparator>
             <TimelineContent>
               Marek Nowak <i>(pracownik)</i>

@@ -16,16 +16,16 @@ import {
 } from "@mui/material";
 import { MainNavigation } from "../layouts/MainNavigation";
 import { Loader } from "../ui-components/Loader";
-import { useIsImageLoaded } from "./scan/hooks/useIsImageLoaded";
+import { useIsImageLoading } from "./scan/hooks/useIsImageLoading";
 import { Controller, useForm } from "react-hook-form";
 import AddIcon from "@mui/icons-material/Add";
 
 export const Scan: FC = () => {
   const scanSrc = "/assets/images/faktura.jpg";
-  const isScanLoaded = useIsImageLoaded(scanSrc);
+  const isScanLoading = useIsImageLoading(scanSrc);
   const { control } = useForm();
 
-  if (isScanLoaded) {
+  if (isScanLoading) {
     return (
       <MainNavigation title="Skanowanie OCR">
         <Loader>Ładowanie danych...</Loader>

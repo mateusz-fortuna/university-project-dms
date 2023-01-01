@@ -62,7 +62,7 @@ export const DocumentsManager: FC = () => {
 
   if (isDataLoading) {
     return (
-      <MainNavigation title="Dokumenty w obiegu">
+      <MainNavigation title="Manager dokumentów">
         <Loader>Ładowanie danych...</Loader>
       </MainNavigation>
     );
@@ -70,8 +70,8 @@ export const DocumentsManager: FC = () => {
 
   if (isNoData) {
     return (
-      <MainNavigation title="Dokumenty w obiegu">
-        <ErrorModal title="Dokumenty w obiegu" description="Brak danych" />
+      <MainNavigation title="Manager dokumentów">
+        <ErrorModal title="Manager dokumentów" description="Brak danych" />
       </MainNavigation>
     );
   }
