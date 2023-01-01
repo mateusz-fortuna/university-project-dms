@@ -64,7 +64,7 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 30)),
       "yyyy-MM-dd"
     ),
-    history: getHistoryByDocumentId("1"),
+    history: getHistoryByDocumentId("4"),
   },
   {
     id: "4",
@@ -82,6 +82,6 @@ export const documents: Document[] = [
       subDays(today, getRandomIntBetween(1, 30)),
       "yyyy-MM-dd"
     ),
-    history: getHistoryByDocumentId("1"),
+    history: getHistoryByDocumentId("4"),
   },
 ];

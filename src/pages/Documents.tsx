@@ -26,6 +26,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 
 export const Documents: FC = () => {
+  const [selectedDocumentId, setSelectedDocumentId] =
+    useState<Document["id"]>("");
+
   const documentsQuery = useDocumentsQuery();
   const documentRunsQuery = useDocumentRunsQuery();
   const documentRunStagesQuery = useDocumentRunStagesQuery();
@@ -61,9 +64,6 @@ export const Documents: FC = () => {
       </MainNavigation>
     );
   }
-
-  const [selectedDocumentId, setSelectedDocumentId] =
-    useState<Document["id"]>("");
 
   const tableData = transformDocumentsData(
     documentsQuery.data,
