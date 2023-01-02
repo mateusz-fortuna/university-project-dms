@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/university-project-dms/static/css/main.946a222a.css",
-    "main.js": "/university-project-dms/static/js/main.082031dc.js",
+    "main.js": "/university-project-dms/static/js/main.5ae3f80f.js",
     "static/media/roboto-all-500-normal.woff": "/university-project-dms/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/university-project-dms/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
     "static/media/roboto-all-400-normal.woff": "/university-project-dms/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
@@ -36,10 +36,10 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/university-project-dms/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/university-project-dms/index.html",
     "main.946a222a.css.map": "/university-project-dms/static/css/main.946a222a.css.map",
-    "main.082031dc.js.map": "/university-project-dms/static/js/main.082031dc.js.map"
+    "main.5ae3f80f.js.map": "/university-project-dms/static/js/main.5ae3f80f.js.map"
   },
   "entrypoints": [
     "static/css/main.946a222a.css",
-    "static/js/main.082031dc.js"
+    "static/js/main.5ae3f80f.js"
   ]
 }
